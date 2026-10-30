@@ -1,0 +1,173 @@
+/* ===== 디자인 시스템 — 이 블록만 바꾸면 전체가 따라와요 =====
+   레이아웃: 크림 바탕 위에 포스터·제품 사진이 주인공. 색은 제품 구분(키워드 점·제품 테두리)에만 쓰고 면은 칠하지 않아요
+   PC는 오른쪽 세로 메뉴 자리를 비워 두고(내용과 겹치지 않게), 1100px 아래는 위쪽 가로 메뉴로 바뀌어요 */
+@font-face{font-family:"Mont";src:url("assets/fonts/Mont-HeavyDEMO.otf") format("opentype");font-weight:800;font-display:swap}
+@font-face{font-family:"Recipekorea";src:url("assets/fonts/Recipekorea.otf") format("opentype");font-display:swap}
+:root{
+  --cream:#F6F0E5;      /* 기본 바탕 */
+  --paper:#FFFCF7;      /* 제품 영역 바탕(사진 배경과 부딪히지 않게 밝게) */
+  --green:#B9D8C0; --peach:#F2C7B5; --yellow:#F2E29A; --berry:#B98291;
+  --ink:#3A2C31;        /* 글자·주 버튼 */
+  --muted:#6B5B60;      /* 보조 글자(크림 위 5.9:1) */
+  --berry-deep:#8A5A68; /* Berry Rose를 어둡게 — 작은 라벨 글자용(크림 위 5.1:1) */
+  --line:#E6DCCD;
+  --white:#FFFFFF;
+
+  --f-en:"Mont","Pretendard Variable",Pretendard,system-ui,sans-serif;
+  --f-kt:"Recipekorea","Pretendard Variable",Pretendard,system-ui,sans-serif;
+  --f-body:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+
+  /* 글자 3단계 — 지난 시안보다 10~15% 작게 시작 */
+  --fs-mark:clamp(48px,7vw,96px);
+  --fs-h2:clamp(24px,3vw,36px);
+  --fs-body:17px;
+  --fs-ui:16px;
+
+  --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s6:48px; --s8:64px; --s12:96px;
+  --radius:20px;
+  --gutter:max(16px,6vw);
+  --nav-space:0px;
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 var(--fs-body)/1.7 var(--f-body);word-break:keep-all;overflow-wrap:break-word;-webkit-text-size-adjust:100%}
+img{max-width:100%;display:block}
+h1,h2,h3,p,ul,figure{margin:0}
+ul{padding:0;list-style:none}
+.en{font-family:var(--f-en);font-weight:800;letter-spacing:-.01em}
+.wrap{max-width:1440px;margin:0 auto;padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:calc(max(var(--gutter),env(safe-area-inset-right,0px)) + var(--nav-space))}
+
+.label{font-size:var(--fs-ui);color:var(--berry-deep);margin-bottom:var(--s2)}
+.ko-title{font-family:var(--f-kt);font-weight:400;font-size:var(--fs-h2);line-height:1.35;text-wrap:balance}
+.body{max-width:36em;margin-top:var(--s2);color:var(--muted)}
+
+/* 버튼 상태: 기본 · hover · active · focus */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 var(--s4);border-radius:999px;background:var(--ink);color:var(--cream);border:2px solid var(--ink);font:600 var(--fs-ui)/1 var(--f-body);text-decoration:none;transition:background .2s,color .2s,transform .1s}
+.btn:hover{background:#21181B}
+.btn:active{transform:translateY(1px)}
+.btn-line{background:transparent;color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--cream)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--berry-deep);outline-offset:3px}
+
+/* 섹션 메뉴 — PC: 오른쪽 세로 · 1100px 아래: 위쪽 가로 */
+.secnav{position:fixed;right:max(24px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);z-index:20}
+.secnav-brand{display:none}
+.secnav ul{display:flex;flex-direction:column;gap:var(--s1)}
+.secnav a{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 var(--s2);border-radius:999px;color:var(--muted);text-decoration:none;font:500 var(--fs-ui)/1 var(--f-body);transition:color .2s,background .2s}
+.secnav a:hover{color:var(--ink)}
+.secnav .dot{width:8px;height:8px;border-radius:50%;border:1.5px solid currentColor;transition:background .2s,transform .2s}
+.secnav a[aria-current="true"]{color:var(--ink);font-weight:700;background:color-mix(in srgb,var(--white) 70%,transparent)}
+.secnav a[aria-current="true"] .dot{background:var(--berry);border-color:var(--berry);transform:scale(1.4)}
+
+/* 섹션 공통 */
+.sec{padding-block:var(--s12);scroll-margin-top:0}
+.sec-tint{background:var(--paper)}
+
+/* 1. Home */
+.home{padding-block:var(--s8) var(--s12)}
+.home-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:var(--s8);align-items:center}
+.wordmark{font-size:var(--fs-mark);line-height:1;letter-spacing:-.02em}
+.slogan{font-size:clamp(18px,1.8vw,24px);color:var(--berry-deep);margin-top:var(--s2)}
+.intro{margin-top:var(--s4);max-width:30em;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s4)}
+.home-poster .img{aspect-ratio:3/4;max-height:78vh;margin-left:auto;border-radius:var(--radius);overflow:hidden;background:var(--white);box-shadow:0 24px 48px -32px rgba(58,44,49,.45)}
+.home-poster img{width:100%;height:100%;object-fit:cover}
+
+/* 2. Brand */
+.brand-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s8);align-items:start}
+.keywords li{display:grid;grid-template-columns:20px 1fr;column-gap:var(--s2);padding-block:var(--s3);border-top:1px solid var(--line)}
+.keywords li:last-child{border-bottom:1px solid var(--line)}
+.kdot{width:14px;height:14px;border-radius:50%;background:var(--kc);margin-top:14px}
+.keywords h3{font-size:clamp(28px,3vw,40px);line-height:1.1}
+.keywords p{grid-column:2;color:var(--muted);margin-top:var(--s1)}
+
+/* 3. Products — 누른 제품만 넓어지고 나머지는 작게 남아요(모달 없음) */
+.pgallery{display:flex;gap:var(--s2);height:clamp(320px,34vw,460px);margin-top:var(--s6)}
+.ptile{position:relative;flex:1 1 0;min-width:0;padding:0;border:0;border-radius:var(--radius);overflow:hidden;background:var(--cream);cursor:pointer;transition:flex-grow .45s ease,box-shadow .2s}
+.ptile img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+@media (hover:hover){.ptile:hover img{transform:scale(1.03)}}
+.ptile[aria-pressed="true"] img{object-fit:contain;background:var(--paper)}
+.ptile[aria-pressed="true"]{flex-grow:3.2;box-shadow:0 0 0 3px var(--pc),0 0 0 6px var(--paper)}
+.ptag{position:absolute;left:var(--s2);bottom:var(--s2);display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 14px;border-radius:999px;background:var(--white);color:var(--ink);font:500 var(--fs-ui)/1 var(--f-body);white-space:nowrap}
+.ptag .en{font-size:var(--fs-ui)}
+.pgallery:has([aria-pressed="true"]) .ptile:not([aria-pressed="true"]) .ptag .en{display:none}
+.ptile[aria-pressed="true"] .ptag{background:var(--ink);color:var(--cream)}
+.ptile[aria-pressed="true"] .ptag::after{content:"· 선택됨";font-size:var(--fs-ui);opacity:.85}
+.pinfo{display:grid;gap:4px;margin-top:var(--s4);min-height:84px}
+.pinfo-name{font-size:clamp(24px,2.6vw,32px);line-height:1.2}
+.pinfo-line{color:var(--muted)}
+
+/* 4. Design — 올리면·누르면 그 작업물이 넓어지고 옆 작업물이 밀려나요 */
+.dgallery{display:flex;gap:var(--s3);margin-top:var(--s6)}
+.dwork{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:var(--s2);padding:0;border:0;background:none;color:inherit;text-align:left;cursor:pointer;transition:flex-grow .45s ease}
+.dimg{display:block;height:clamp(300px,32vw,480px);border-radius:var(--radius);background:var(--white);border:1px solid var(--line);overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.dimg img{width:100%;height:100%;object-fit:contain}
+.dcap{display:grid;gap:2px}
+.dtitle{font-size:20px}
+.dline{color:var(--muted);font-size:var(--fs-ui)}
+@media (hover:hover){.dwork:hover{flex-grow:1.35}}
+.dwork:focus-visible{flex-grow:1.35}
+.dwork[aria-pressed="true"]{flex-grow:1.8}
+.dwork[aria-pressed="true"] .dimg{border-color:var(--berry);box-shadow:0 0 0 2px var(--berry)}
+.dwork[aria-pressed="true"] .dtitle::after{content:" · 선택됨";font-family:var(--f-body);font-weight:500;font-size:var(--fs-ui);color:var(--berry-deep)}
+
+/* Footer */
+.foot{padding-block:var(--s6);border-top:1px solid var(--line);color:var(--muted);font-size:var(--fs-ui)}
+
+/* 섹션 진입 모션: 짧은 거리만, 화면 아래에 있던 것만. 숨기지 않아서 캡처·링크 미리보기에도 다 보여요 */
+.rv{transition:transform .6s ease}
+.rv.wait{transform:translateY(16px)}
+
+/* PC 넓은 화면: 세로 메뉴 자리를 비워요 */
+@media (min-width:1100px){
+  :root{--nav-space:150px}
+}
+
+/* 1000px 아래: 제품은 2×2로 보이다가 누른 제품이 한 줄을 차지해요(빈칸 없이 채움) */
+@media (max-width:999px){
+  .pgallery{display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:row dense;height:auto;gap:var(--s2)}
+  .ptile{aspect-ratio:1/1}
+  .ptile[aria-pressed="true"]{grid-column:1/-1;aspect-ratio:6/5}
+}
+
+/* 1100px 아래: 위쪽 가로 메뉴(화면을 가리지 않게 흐름 안에 붙어요) */
+@media (max-width:1099px){
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--cream)}
+  .secnav{position:sticky;top:env(safe-area-inset-top,0px);right:auto;transform:none;display:flex;align-items:center;gap:var(--s2);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));background:color-mix(in srgb,var(--cream) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .secnav-brand{display:block;font-size:20px;flex:none}
+  .secnav ul{flex-direction:row;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
+  .secnav ul::-webkit-scrollbar{display:none}
+  .secnav a{padding:0 12px;white-space:nowrap}
+  .secnav .dot{display:none}
+  .secnav a[aria-current="true"]{background:var(--ink);color:var(--cream)}
+  html{scroll-padding-top:56px}
+}
+
+@media (max-width:860px){
+  .home-grid,.brand-grid{grid-template-columns:1fr;gap:var(--s6)}
+  .home-poster .img{max-height:none;max-width:560px;margin-inline:auto}
+}
+
+@media (max-width:720px){
+  .sec{padding-block:var(--s8)}
+  .home{padding-block:var(--s4) var(--s8)}
+  .secnav-brand{display:none}
+  .secnav ul{margin-left:0}
+  .actions .btn{flex:1 1 auto}
+  /* 제품: 2×2로 보이다가 누른 제품이 한 줄을 차지해요 */
+  .ptag{left:var(--s1);bottom:var(--s1);padding:0 10px}
+  .ptag .en{display:none}
+  .ptile[aria-pressed="true"] .ptag .en{display:inline}
+  /* 디자인: 세로로 하나씩, 원래 비율 그대로 */
+  .dgallery{flex-direction:column;gap:var(--s4)}
+  .dimg{height:auto}
+  .dimg img{height:auto}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .rv.wait{transform:none}
+}

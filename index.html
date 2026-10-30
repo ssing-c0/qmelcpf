@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Petitzel 리디자인</title>
+<meta name="description" content="학습 목적으로 만든 비공식 쁘띠첼 브랜드 리디자인. Daily Refreshing Dessert.">
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!--BODY-->
+<nav class="secnav" aria-label="섹션 이동">
+  <span class="secnav-brand en" aria-hidden="true">Petitzel</span>
+  <ul>
+    <li><a href="#home" aria-current="true"><span class="dot" aria-hidden="true"></span>Home</a></li>
+    <li><a href="#brand"><span class="dot" aria-hidden="true"></span>Brand</a></li>
+    <li><a href="#products"><span class="dot" aria-hidden="true"></span>Products</a></li>
+    <li><a href="#design"><span class="dot" aria-hidden="true"></span>Design</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- 1. Home -->
+  <section id="home" class="sec home" aria-labelledby="home-title">
+    <div class="wrap home-grid">
+      <div class="home-text">
+        <h1 id="home-title" class="en wordmark">Petitzel</h1>
+        <p class="slogan en">Daily Refreshing Dessert</p>
+        <p class="intro">빛이 투과하는 투명한 젤리와 싱그러운 과일의 질감으로 쁘띠첼을 다시 그렸습니다. 익숙한 디저트를 오늘의 작은 리프레시로 소개합니다.</p>
+        <div class="actions">
+          <a class="btn" href="#products">Explore Products</a>
+          <a class="btn btn-line" href="#design">View Design</a>
+        </div>
+      </div>
+      <figure class="home-poster">
+        <div class="img"><img src="assets/images/key-visual-poster.jpg" alt="빛을 받아 투명하게 빛나는 복숭아·사과·귤 모양 젤리 키 비주얼 포스터" width="1195" height="1600" fetchpriority="high"></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 2. Brand -->
+  <section id="brand" class="sec" aria-labelledby="brand-title">
+    <div class="wrap brand-grid">
+      <div>
+        <p class="label en">Brand</p>
+        <h2 id="brand-title" class="ko-title">우리들의 하루가<br>조금 더 달콤해지도록</h2>
+        <p class="body">쁘띠첼은 작은 디저트 하나로 누구나 하루를 기분 좋게 바꿀 수 있도록, 일상의 리프레시를 만드는 디저트 브랜드입니다.</p>
+      </div>
+      <ul class="keywords">
+        <li style="--kc:var(--green)"><span class="kdot" aria-hidden="true"></span><h3 class="en">Fresh</h3><p>과일의 싱그러움, 투명함, 가벼운 리프레시 감각</p></li>
+        <li style="--kc:var(--peach)"><span class="kdot" aria-hidden="true"></span><h3 class="en">Petit</h3><p>부담 없이 즐길 수 있는 작고 친근한 디저트</p></li>
+        <li style="--kc:var(--yellow)"><span class="kdot" aria-hidden="true"></span><h3 class="en">Joy</h3><p>일상에서 발견하는 작고 기분 좋은 순간</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. Products -->
+  <section id="products" class="sec sec-tint" aria-labelledby="products-title">
+    <div class="wrap">
+      <p class="label en">Products</p>
+      <h2 id="products-title" class="ko-title">과일 젤리 푸딩 4종</h2>
+      <p class="body">제품을 누르면 크게 볼 수 있습니다. 한 번 더 누르면 네 가지를 다시 함께 봅니다.</p>
+      <div class="pgallery" id="pgallery">
+        <button type="button" class="ptile" aria-pressed="false" data-name="Tangerine" data-ko="귤" data-line="Sweet and fresh in every bite" style="--pc:var(--yellow)">
+          <img src="assets/images/product-tangerine.jpg" alt="귤 조각이 담긴 쁘띠첼 Tangerine 컵 젤리" width="626" height="539" loading="lazy">
+          <span class="ptag"><span class="en">Tangerine</span> 귤</span>
+        </button>
+        <button type="button" class="ptile" aria-pressed="false" data-name="Peach" data-ko="복숭아" data-line="Soft and juicy for a brighter day" style="--pc:var(--peach)">
+          <img src="assets/images/product-peach.jpg" alt="복숭아 조각이 담긴 쁘띠첼 Peach 컵 젤리" width="624" height="537" loading="lazy">
+          <span class="ptag"><span class="en">Peach</span> 복숭아</span>
+        </button>
+        <button type="button" class="ptile" aria-pressed="false" data-name="Apple" data-ko="사과" data-line="Crisp and clean like a morning" style="--pc:var(--green)">
+          <img src="assets/images/product-apple.jpg" alt="사과 조각이 담긴 쁘띠첼 Apple 컵 젤리" width="624" height="532" loading="lazy">
+          <span class="ptag"><span class="en">Apple</span> 사과</span>
+        </button>
+        <button type="button" class="ptile" aria-pressed="false" data-name="Blueberry" data-ko="블루베리" data-line="Small moments of happiness" style="--pc:var(--berry)">
+          <img src="assets/images/product-blueberry.jpg" alt="블루베리가 담긴 쁘띠첼 Blueberry 컵 젤리" width="625" height="522" loading="lazy">
+          <span class="ptag"><span class="en">Blueberry</span> 블루베리</span>
+        </button>
+      </div>
+      <div class="pinfo" aria-live="polite">
+        <p class="pinfo-name en" id="pinfo-name">Fruit Jelly Pudding</p>
+        <p class="pinfo-line" id="pinfo-line">귤 · 복숭아 · 사과 · 블루베리, 네 가지 과일 젤리 푸딩입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Design -->
+  <section id="design" class="sec" aria-labelledby="design-title">
+    <div class="wrap">
+      <p class="label en">Design</p>
+      <h2 id="design-title" class="ko-title">하나의 빛, 하나의 질감</h2>
+      <p class="body">포스터와 컵·파우치 패키지를 자연광, 투명한 젤리 질감, 물방울 디테일, 부드러운 배경으로 묶었습니다.</p>
+      <div class="dgallery" id="dgallery">
+        <button type="button" class="dwork" aria-pressed="false">
+          <span class="dimg"><img src="assets/images/key-visual-poster.jpg" alt="과일 모양 투명 젤리 키 비주얼 포스터" width="1195" height="1600" loading="lazy"></span>
+          <span class="dcap"><span class="dtitle en">Key Visual Poster</span><span class="dline">과일 모양 젤리에 햇빛이 비치는 메인 포스터</span></span>
+        </button>
+        <button type="button" class="dwork" aria-pressed="false">
+          <span class="dimg"><img src="assets/images/design-cup-lineup.jpg" alt="Tangerine·Peach·Apple·Blueberry 컵 젤리 패키지 4종 키 비주얼" width="1200" height="1200" loading="lazy"></span>
+          <span class="dcap"><span class="dtitle en">Cup Package</span><span class="dline">컵 젤리 4종 패키지와 빛·질감 가이드</span></span>
+        </button>
+        <button type="button" class="dwork" aria-pressed="false">
+          <span class="dimg"><img src="assets/images/design-pouch-poster.jpg" alt="Tangerine·Peach·Apple·Blueberry 워터젤리 파우치 패키지 포스터" width="1400" height="1400" loading="lazy"></span>
+          <span class="dcap"><span class="dtitle en">Pouch Package</span><span class="dline">워터젤리 파우치 4종 패키징 포스터</span></span>
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>본 웹사이트는 학습 목적으로 제작된 비공식 쁘띠첼 브랜드 리디자인 프로젝트입니다.</p>
+  </div>
+</footer>
+<!--/BODY-->
+<script src="script.js" defer></script>
+</body>
+</html>
